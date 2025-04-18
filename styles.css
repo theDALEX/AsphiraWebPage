@@ -43,6 +43,9 @@ header {
     border-bottom: 1px solid var(--secondary-glow);
     position: relative;
     margin-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 h1 {
@@ -172,25 +175,66 @@ footer {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.social-links {
+.contact-links {
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
     margin-top: 1rem;
 }
 
 .social-link {
-    color: rgba(255, 255, 255, 0.7);
-    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+    color: #fff;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.social-link:hover {
-    color: var(--primary-glow);
-    transform: translateY(-3px);
+.social-link i {
+    margin-right: 8px;
 }
+
+/* The animated blue underline */
+.social-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 0%;
+    background-color: var(--secondary-glow);
+    transition: width 0.3s ease;
+}
+
+/* On hover, underline expands smoothly */
+.social-link:hover::after {
+    width: 100%;
+}
+
+/* Optional: slightly change text color on hover */
+.social-link:hover {
+    color: var(--secondary-glow);
+}
+
 
 @media (max-width: 768px) {
+    header {
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--secondary-glow);
+        position: relative;
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        font-size: small;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
