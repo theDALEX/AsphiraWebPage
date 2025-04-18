@@ -1,0 +1,210 @@
+:root {
+    --primary-glow: #0ff;
+    --secondary-glow: #03e9f4;
+    --dark-bg: #000000;
+    --dark-surface: #0c1013;
+    --grid-line: rgba(3, 233, 244, 0.2);
+}
+
+body {
+    background-image: linear-gradient(to right bottom, #000000, #171717, #272727, #373737, #494949);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--secondary-glow);
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 5rem;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background-color: rgba(7, 17, 27, 0.8);
+    border: 1px solid var(--grid-line);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--secondary-glow);
+}
+
+.project-card:hover .project-title {
+    color: var(--primary-glow);
+}
+
+.project-image {
+    width: 100%;
+    height: 180px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--grid-line);
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.project-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tech-tag {
+    background-color: rgba(3, 233, 244, 0.1);
+    border: 1px solid var(--grid-line);
+    color: var(--secondary-glow);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+}
+
+.btn-more {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--secondary-glow);
+    background-color: transparent;
+    color: var(--secondary-glow);
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-more:hover {
+    background-color: var(--secondary-glow);
+    color: var(--dark-bg);
+    box-shadow: 0 0 10px var(--secondary-glow);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.social-link:hover {
+    color: var(--primary-glow);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-details {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}
